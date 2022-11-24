@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumno;
+use App\Models\Curso;
+use App\Models\Jornada;
 use Illuminate\Http\Request;
 
 class AlumnoController extends Controller
@@ -15,7 +17,7 @@ class AlumnoController extends Controller
     public function index()
     {
         //
-        $alumnos = Alumno::all();
+                $alumnos = Alumno::all();
         return view('alumnos.index', compact('alumnos'));
     }
 
@@ -27,8 +29,9 @@ class AlumnoController extends Controller
     public function create()
     {
         //
-
-        return view('alumnos.create');
+        $cursos = Curso::all();
+        $jornadas = Jornada::all();
+        return view('alumnos.create', compact('cursos', 'jornadas'));
     }
 
     /**

@@ -14,10 +14,12 @@
 <div class="col-6">
     <div class="input-group mb-2">
     <span class="input-group-text" id="inputGroup-sizing-default">Carrera Tecnica </span>
-    <input type="text" class="form-control" name="curso" id="curso" 
-        placeholder="Nombre del curso"
-        value="{{ isset($al->curso)?$al->curso:"" }}"
-    >
+    <select class="form-select" name="curso_id">
+        <option value=""  >--Select--</option>
+        @foreach($cursos as $curso)
+        <option value="{{$curso->id}}" {{ $curso ? 'selected' : '' }}> {{ $curso->nombre }}</option>
+        @endforeach
+    </select>
     </div>
 </div>
 
@@ -25,10 +27,12 @@
 <div class="col-4">
     <div class="input-group mb-2">
         <span class="input-group-text" id="inputGroup-sizing-default">Jornada </span>
-    <input type="text" class="form-control" name="jornada" id="jornada" 
-        placeholder="Jornada"
-        value="{{ isset($al->jornada)?$al->jornada:"" }}"
-    >
+        <select class="form-select" name="jornada_id">
+            <option value=""  >--Select--</option>
+            @foreach($jornadas as $jornada)
+            <option value="{{$jornada->id}}" {{ $jornada ? 'selected' : '' }}> {{ $jornada->nombre }}</option>
+            @endforeach
+        </select>
     </div>
 </div>
 <div class="col-2">
