@@ -347,5 +347,5 @@
 
 <div class="col-12 mb-5">
 <button type="submit" class="btn btn-primary" value="Enviar">Guardar</button>
-<a class="btn btn-danger" href="{{ url('/curso')}}" >Cancelar</a>
+<a class="btn btn-danger" href="{{ url('/alumno')}}" >Cancelar</a>
 </div>

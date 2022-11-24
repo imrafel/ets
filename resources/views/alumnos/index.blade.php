@@ -36,8 +36,8 @@
                         @endif
                     </td>
                     <td>{{ $al->carne}}</td>
-                    <td>{{ $al->curso }}</td>
-                    <td>{{ $al->jornada }}</td>
+                    <td>{{ $al->curso->nombre }}</td>
+                    <td>{{ $al->jornada->nombre }}</td>
                     <td>{{ $al->apellido }}</td>
                     <td>{{ $al->nombre }}</td>
                     <td>{{ $al->email }}</td>

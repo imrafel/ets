@@ -14,7 +14,10 @@
                                 <a class="btn btn-success" href="{{ url('/curso')}}" >Cursos</a>
                             </div>
                             <div class="col">
-                                <a class="btn btn-success" href="{{ url('/alumno')}}" >Agregar alumno</a>
+                                <a class="btn btn-success" href="{{ url('/alumno')}}" >Alumnos</a>
+                            </div>
+                            <div class="col">
+                                <a class="btn btn-success" href="{{ url('/jornada')}}" >Jornadas</a>
                             </div>
                         </div>
                     </div>

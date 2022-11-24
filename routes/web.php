@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\JornadaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ Route::get('/', function () {
 Route::resource('curso', CursoController::class);
 
 Route::resource('alumno', AlumnoController::class);
+
+Route::resource('jornada', JornadaController::class);
 
 Auth::routes();
 

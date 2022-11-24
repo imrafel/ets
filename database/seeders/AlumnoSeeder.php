@@ -17,8 +17,8 @@ class AlumnoSeeder extends Seeder
         //
         DB::table('alumnos')->insert([
             'TU' => '1',
-            'curso' => 'Mecanismos del Automovil',
-            'jornada' => 'Matutina',
+            'curso_id' => '1',
+            'jornada_id' => '1',
             'edad' => '24',
             'ingreso' => 'Primero ingreso',
             'carne' => 'E-2014465',
