@@ -19,6 +19,12 @@
                             <div class="col">
                                 <a class="btn btn-success" href="{{ url('/jornada')}}" >Jornadas</a>
                             </div>
+                            <div class="col">
+                                <a class="btn btn-success" href="{{ url('/asistencia')}}" >Ver Asistencias</a>
+                            </div>
+                            <div class="col">
+                                <a class="btn btn-success" href="{{ url('/asistencia/create')}}" >Agregar Asistencia</a>
+                            </div>
                         </div>
                     </div>
                 </div>

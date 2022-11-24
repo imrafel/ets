@@ -13,6 +13,7 @@
         <table class="table">
             <thead>
             <tr>
+                <th scope="col">#</th>
                 <th scope="col">T U</th>
                 <th scope="col">Carne</th>
                 <th scope="col">Carrera Tecnica</th>
@@ -28,6 +29,7 @@
             <tbody>
             @foreach ($alumnos as $al)
                 <tr> 
+                    <td>{{ $al->id }}</td>
                     <td>
                         @if ( $al->TU  == 1 )
                             Si
@@ -35,6 +37,7 @@
                             No
                         @endif
                     </td>
+                    td
                     <td>{{ $al->carne}}</td>
                     <td>{{ $al->curso->nombre }}</td>
                     <td>{{ $al->jornada->nombre }}</td>
@@ -51,7 +54,7 @@
                                 class="btn btn-danger" 
                                 onclick="return confirm('Seguro quieres eliminar?')" />
                                 <a class="btn btn-warning" href="{{ url('/alumno/' . $al->id . '/edit') }}">Editar</a>
-                                <a class="btn btn-primary" href="{{ url('/alumno/' . $al->id . '/edit') }}">Ver Detalle</a>
+                                <a class="btn btn-primary" href="{{ url('/alumno/' . $al->id) }}">Ver Detalle</a>
                         </form>
                     </td>
                 </tr>

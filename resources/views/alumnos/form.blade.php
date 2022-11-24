@@ -1,9 +1,17 @@
 
+@if(count($errors)>0)
+   <div class="alert alert-danger" role="alert"  >
+    faltan algunos datos
+   </div>
+@endif
+
+
+
 <div class="col-2" > 
     <div class="input-group mb-2">
         <span class="input-group-text" id="inputGroup-sizing-default">TU</span>
         <select class="form-select" aria-label="Default select example" name="TU"  >
-            <option selected> {{ isset($al->TU)?$al->TU:old('TU') }}</option>
+            <option selected> {{ isset($alumno->TU)?$alumno->TU:old('TU') }}</option>
             <option value="1">Si</option>
             <option value="0">No</option>
         </select>
@@ -40,7 +48,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Edad</span>
     <input type="number" class="form-control" name="edad" id="edad" 
         placeholder="Edad"
-        value="{{ isset($al->edad)?$al->edad:"" }}"
+        value="{{ isset($alumno->edad)?$alumno->edad:old('edad') }}"
     >
     </div>
 </div>
@@ -52,7 +60,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Alumno de ingreso:</span>
     <input type="text" class="form-control" name="ingreso" id="ingreso" 
         placeholder="Ingreso"
-        value="{{ isset($al->ingreso)?$al->ingreso:"" }}"
+        value="{{ isset($alumno->ingreso)?$alumno->ingreso:old('ingreso') }}"
     >
     </div>
 </div>
@@ -61,7 +69,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">No. de Carne</span>
     <input type="text" class="form-control" name="carne" id="carne" 
         placeholder="Numero de Carne"
-        value="{{ isset($al->carne)?$al->carne:"" }}"
+        value="{{ isset($alumno->carne)?$alumno->carne:old('carne') }}"
     >
     </div>
 </div>
@@ -73,7 +81,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Nombres </span>
     <input type="text" class="form-control" name="nombre" id="nombre" 
         placeholder="Nombres"
-        value="{{ isset($al->nombre)?$al->nombre:"" }}"
+        value="{{ isset($alumno->nombre)?$alumno->nombre:old('nombre')}}"
     >
     </div>
 </div>
@@ -83,7 +91,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Apellidos</span>
     <input type="text" class="form-control" name="apellido" id="apellido" 
         placeholder="Apellidos"
-        value="{{ isset($al->apellido)?$al->apellido:"" }}"
+        value="{{ isset($alumno->apellido)?$alumno->apellido:old('apellido')}}"
     >
     </div>
 </div>
@@ -96,7 +104,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Direccion </span>
     <input type="text" class="form-control" name="direccion" id="direccion" 
         placeholder="Direccion"
-        value="{{ isset($al->direccion)?$al->direcicon:"" }}"
+        value="{{ isset($alumno->direccion)?$alumno->direccion:old('direccion') }}"
     >
     </div>
 </div>
@@ -107,7 +115,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Departamento </span>
     <input type="text" class="form-control" name="departamento" id="departamento" 
         placeholder="Departamento"
-        value="{{ isset($al->departamento)?$al->departamento:"" }}"
+        value="{{ isset($alumno->departamento)?$alumno->departamento:old('departamento')}}"
     >
     </div>
 </div>
@@ -116,7 +124,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Municipio </span>
     <input type="text" class="form-control" name="municipio" id="municipio" 
         placeholder="Municipio"
-        value="{{ isset($al->municipio)?$al->municipio:"" }}"
+        value="{{ isset($alumno->municipio)?$alumno->municipio:old('municipio') }}"
     >
     </div>
 </div>
@@ -125,7 +133,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Telefono Movil</span>
     <input type="text" class="form-control" name="movil" id="movil" 
         placeholder="Telefono Movil"
-        value="{{ isset($al->movil)?$al->movil:"" }}"
+        value="{{ isset($alumno->movil)?$alumno->movil:old('movil') }}"
     >
     </div>
 </div>
@@ -134,7 +142,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Telefono de Casa </span>
     <input type="text" class="form-control" name="casa" id="casa" 
         placeholder="Telefono de Casa"
-        value="{{ isset($al->casa)?$al->casa:"" }}"
+        value="{{ isset($alumno->casa)?$alumno->casa:old('casa') }}"
     >
     </div>
 </div>
@@ -145,7 +153,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Correo Electronico</span>
     <input type="text" class="form-control" name="email" id="email" 
         placeholder="Email / Correo Electronico"
-        value="{{ isset($al->email)?$al->email:"" }}"
+        value="{{ isset($alumno->email)?$alumno->email:old('email') }}"
     >
     </div>
 </div>
@@ -156,7 +164,7 @@
     <div class="input-group mb-2">
         <span class="input-group-text" id="inputGroup-sizing-default">Vehiculo:</span>
     <select class="form-select" aria-label="Default select example" name="vehiculo" >
-        <option selected> {{ isset($al->vehiculo)?$al->vehiculo:old('vehiculo') }}</option>
+        <option selected> {{ isset($alumno->vehiculo)?$alumno->vehiculo:old('vehiculo') }}</option>
         <option value="1">Si</option>
         <option value="0">No</option>
     </select>
@@ -166,7 +174,7 @@
     <div class="input-group mb-3">
     <span class="input-group-text" id="inputGroup-sizing-default">Tipo de Vehiculo</span> 
     <select class="form-select" aria-label="Default select example" name="tipoVehiculo" >
-        <option selected> {{ isset($al->tipoVehiculo)?$al->tipoVehiculo:old('tipoVehiculo') }}</option>
+        <option selected> {{ isset($alumno->tipoVehiculo)?$alumno->tipoVehiculo:old('tipoVehiculo') }}</option>
         <option value="Carro">Carro</option>
         <option value="Moto">Moto</option>
     </select>
@@ -177,7 +185,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Placas</span>
     <input type="text" class="form-control" name="placas" id="placas" 
         placeholder="Placas"
-        value="{{ isset($al->placas)?$al->placas:"" }}"
+        value="{{ isset($alumno->placas)?$alumno->placas:old('placas') }}"
     >
     </div>
 </div>
@@ -190,7 +198,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Como se entero de kinal</span>
     <input type="text" class="form-control" name="kinal" id="kinal" 
         placeholder="Como se entero de kinal"
-        value="{{ isset($al->kinal)?$al->kinal:"" }}"
+        value="{{ isset($alumno->kinal)?$alumno->kinal:old('kinal') }}"
     >
     </div>
 </div>
@@ -199,7 +207,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Parentesco</span>
     <input type="text" class="form-control" name="parentesco" id="parentesco" 
         placeholder="Parentesco"
-        value="{{ isset($al->parentesco)?$al->parentesco:"" }}"
+        value="{{ isset($alumno->parentesco)?$alumno->parentesco:old('parentesco') }}"
     >
     </div>
 </div>
@@ -212,7 +220,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Ultimo grado aprobado</span>
     <input type="text" class="form-control" name="ultimoGrado" id="ultimoGrado" 
         placeholder="Ultimo grado cursado"
-        value="{{ isset($al->ultimoGrado)?$al->ultimoGrado:"" }}"
+        value="{{ isset($alumno->ultimoGrado)?$alumno->ultimoGrado:old('ultimoGrado') }}"
     >
     </div>
 </div>
@@ -221,7 +229,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Nombre de quien lo recomienda</span>
     <input type="text" class="form-control" name="recomendacion" id="recomendacion" 
         placeholder="Nombre de quien lo recomienda"
-        value="{{ isset($al->recomendacion)?$al->recomendacion:"" }}"
+        value="{{ isset($alumno->recomendacion)?$alumno->recomendacion:old('recomendacion')}}"
     >
     </div>
 </div>
@@ -232,7 +240,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Empresa donde labora</span>
     <input type="text" class="form-control" name="empresa" id="empresa" 
         placeholder="Empresa donde labora:"
-        value="{{ isset($al->empresa)?$al->empresa:"" }}"
+        value="{{ isset($alumno->empresa)?$alumno->empresa:old('empresa') }}"
     >
     </div>
 </div>
@@ -241,7 +249,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Puesto que desempena</span>
     <input type="text" class="form-control" name="puesto" id="puesto" 
         placeholder="Puesto que desempena"
-        value="{{ isset($al->puesto)?$al->puesto:"" }}"
+        value="{{ isset($alumno->puesto)?$alumno->puesto:old('puesto')}}"
     >
     </div>
 </div>
@@ -251,7 +259,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Direcion de la empresa</span>
     <input type="text" class="form-control" name="direccionEmpresa" id="direccionEmpresa" 
         placeholder="Direccion de la Empresa"
-        value="{{ isset($al->direccionEmpresa)?$al->direccionEmpresa:"" }}"
+        value="{{ isset($alumno->direccionEmpresa)?$alumno->direccionEmpresa:old('direccionEmpresa') }}"
     >
     </div>
 </div>
@@ -260,7 +268,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Telefono de la Empresa</span>
     <input type="text" class="form-control" name="telEmpresa" id="telEmpresa" 
         placeholder="Telefono de la Empresa"
-        value="{{ isset($al->telEmpresa)?$al->telEmpresa:"" }}"
+        value="{{ isset($alumno->telEmpresa)?$alumno->telEmpresa:old('telEmpresa') }}"
     >
     </div>
 </div>
@@ -268,7 +276,7 @@
     <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">La empresa le paga los estudios?</span>
     <select class="form-select" aria-label="Default select example" name="empresaPaga" >
-        <option selected> {{ isset($al->empresaPaga)?$al->empresaPaga:old('empresaPaga') }}</option>
+        <option selected> {{ isset($alumno->empresaPaga)?$alumno->empresaPaga:old('empresaPaga') }}</option>
         <option value="1">Si</option>
         <option value="0">No</option>
     </select>
@@ -279,7 +287,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Recibo a nombre de:</span>
     <input type="text" class="form-control" name="recibo" id="recibo" 
         placeholder="Recibo a nombre de:"
-        value="{{ isset($al->recibo)?$al->recibo:"" }}"
+        value="{{ isset($alumno->recibo)?$alumno->recibo:old('recibo') }}"
     >
     </div>
 </div>
@@ -288,7 +296,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Nit</span>
     <input type="text" class="form-control" name="nit" id="nit" 
         placeholder="Nit"
-        value="{{ isset($al->nit)?$al->nit:"" }}"
+        value="{{ isset($alumno->nit)?$alumno->nit:old('nit') }}"
     >
     </div>
 </div>
@@ -299,7 +307,7 @@
     <span class="input-group-text" id="inputGroup-sizing-default">Inscripcion</span>
     <input type="text" class="form-control" name="inscripcion" id="inscripcion" 
         placeholder="inscripcion"
-        value="{{ isset($al->inscripcion)?$al->inscripcion:"" }}"
+        value="{{ isset($alumno->inscripcion)?$alumno->inscripcion:old('inscripcion') }}"
     >
     </div>
 </div>
@@ -308,7 +316,7 @@
     <span class="input-group-text" id="inputGroup-sizing-default">Mensualidades</span>
     <input type="text" class="form-control" name="mensualidad" id="mensualidad" 
         placeholder="Mensualidad"
-        value="{{ isset($al->mensualidad)?$al->mensualidad:"" }}"
+        value="{{ isset($alumno->mensualidad)?$alumno->mensualidad:old('mensualidad') }}"
     >
     </div>
 </div>
@@ -317,7 +325,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Forma de pago</span>
     <input type="text" class="form-control" name="formaPago" id="formaPago" 
         placeholder="Forma de Pago"
-        value="{{ isset($al->formaPago)?$al->formaPago:"" }}"
+        value="{{ isset($alumno->formaPago)?$alumno->formaPago:old('formaPago') }}"
     >
     </div>
 </div>
@@ -327,7 +335,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Duracion:</span>
     <input type="text" class="form-control" name="duracion" id="duracion" 
     placeholder="Durante:"
-    value="{{ isset($al->duracion)?$al->duracion:"" }}"
+    value="{{ isset($alumno->duracion)?$alumno->duracion:old('duracion')}}"
     >
     </div>
 </div>
@@ -336,7 +344,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">Meses</span>
     <input type="text" class="form-control" name="meses" id="meses" 
     placeholder="Meses"
-    value="{{ isset($al->meses)?$al->meses:"" }}"
+    value="{{ isset($alumno->meses)?$alumno->meses:old('meses') }}"
     >
     </div>
 </div>
@@ -344,7 +352,7 @@
     <span class="input-group-text" id="inputGroup-sizing-default">Razonamiento / Inscrito por:</span>
     <input type="text" class="form-control" name="razonamiento" id="razonamiento" 
         placeholder="Razonamiento / Inscrito por:"
-        value="{{ isset($al->razonamiento)?$al->razonamiento:"" }}"
+        value="{{ isset($alumno->razonamiento)?$alumno->razonamiento:old('razonamiento') }}"
     >
     </div>
 </div>
