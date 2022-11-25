@@ -8,7 +8,7 @@
 
 <div class="container">
     <a class="btn btn-success" href="{{ url('/alumno/create')}}" >Agregar Alumno</a>
-    <div class="row justify-content-center">
+    <div class="row  justify-content-center">
         
         <table class="table">
             <thead>
@@ -37,13 +37,14 @@
                             No
                         @endif
                     </td>
-                    td
+                    
                     <td>{{ $al->carne}}</td>
                     <td>{{ $al->curso->nombre }}</td>
                     <td>{{ $al->jornada->nombre }}</td>
                     <td>{{ $al->apellido }}</td>
                     <td>{{ $al->nombre }}</td>
                     <td>{{ $al->email }}</td>
+                    <td>{{ $al->movil }}</td>
                     <td>Q {{ $al->mensualidad }}.00</td>
                     <td>{{ $al->razonamiento }}</td>
                     <td>

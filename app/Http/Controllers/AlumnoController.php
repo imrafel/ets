@@ -93,12 +93,6 @@ class AlumnoController extends Controller
 
         Alumno::insert($datosAlumno);
         
-
-        $ultimoId = Alumno::latest('id')->first()->id;
-        
-        Asistencia::create([
-            'alumno_id' => $ultimoId
-        ]);
         return redirect('/alumno')->with('mensaje', 'Agergado con exito');
     }
 

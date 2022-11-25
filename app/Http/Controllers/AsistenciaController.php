@@ -22,10 +22,8 @@ class AsistenciaController extends Controller
     {
         
         $asistencias = Asistencia::all();
-        
-        
 
-        // $asistencias = Asistencia::all();
+       
         return view('asistencias.index', compact('asistencias'));
     }
 

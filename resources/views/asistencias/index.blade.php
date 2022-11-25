@@ -19,7 +19,6 @@
                 <td scope="col">fecha</td>
                 <td scope="col">mes</td>
                 <td scope="col">Asistio</td>
-                {{-- <td scope="col">Opciones</td> --}}
             </tr>
             </thead>
             <tbody>

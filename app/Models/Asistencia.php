@@ -22,7 +22,6 @@ class Asistencia extends Model
         return $this->hasOne(Alumno::class, 'id', 'alumno_id');
     }
 
-
     public function curso(){
 
         return $this->hasOne(Curso::class, 'id', 'curso_id');
