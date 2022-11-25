@@ -18,6 +18,7 @@
                 <th scope="col">Apellido del alumno</th>
                 <td scope="col">fecha</td>
                 <td scope="col">mes</td>
+                <td scope="col">Asistio</td>
                 {{-- <td scope="col">Opciones</td> --}}
             </tr>
             </thead>
@@ -29,6 +30,7 @@
                     <td>{{ $as->alumno->apellido }}</td>
                     <td>{{ $as->fecha }}</td>
                     <td>{{ $as->mes }}</td>
+                    <td>{{ $as->asistio }}</td>
                 </tr>
             @endforeach
             </tbody>

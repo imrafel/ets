@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 use App\Models\Asistencia;
 use App\Models\Alumno;
 use App\Models\Curso;
@@ -21,6 +23,8 @@ class AsistenciaController extends Controller
         
         $asistencias = Asistencia::all();
         
+        
+
         // $asistencias = Asistencia::all();
         return view('asistencias.index', compact('asistencias'));
     }
@@ -36,6 +40,8 @@ class AsistenciaController extends Controller
 
         $alumnos = Alumno::where('curso_id', '1')->get();
 
+        
+
         return view('asistencias.create', compact('alumnos'));
     }
 
@@ -48,9 +54,43 @@ class AsistenciaController extends Controller
     public function store(Request $request)
     {
         //
+        
         $datosAsistencia = request()->except('_token', 'nombre', 'apellido', 'jornada_id');
 
-        return response()->json($datosAsistencia);
+        $ids = $datosAsistencia['id'];
+        $asistio = $datosAsistencia['asistio'];
+        $fecha = $datosAsistencia['dia'];
+        $mes = $datosAsistencia['mes']; 
+
+        $datos = array_combine($ids, $asistio);
+
+        // foreach($ids as $value) {
+        //     foreach ($asistio as $asis) {
+        //             $data = array(
+        //             'alumno_id' => $value, 
+        //             'fecha' => $fecha,
+        //             'mes' => $mes,
+        //             'asistio' => $asis,
+        //             );
+        //         Asistencia::insert($data);    
+        //     }
+        // }
+
+
+            foreach ($datos as $key => $dato) {
+                $data = array(
+                'alumno_id' => $key, 
+                'fecha' => $fecha,
+                'mes' => $mes,
+                'asistio' => $dato,
+                );
+            Asistencia::insert($data);    
+            }
+
+        // var_dump($datos);
+        return redirect('/asistencia');
+        // return response()->json($data);
+
 
     }
 

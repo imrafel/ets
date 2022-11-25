@@ -11,9 +11,11 @@ class Asistencia extends Model
 
 
     protected $fillable = [
-        'alumno_id'
+        'alumno_id', 'asistio'
     ];
 
+
+    
 
     
     public function alumno(){

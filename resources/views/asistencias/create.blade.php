@@ -6,11 +6,13 @@
 <div class="container">
 
     <h3>Mecanica Automotriz</h3>
-    <input type="text" value="Febrero" disabled>
+    
     <div class="row justify-content-center">
       
 <form action="{{ url('/asistencia') }}" method="POST" enctype="multipart/form-data" >
     @csrf
+    <input type="text" value="Febrero" name="mes" >
+    <input type="text" name="dia" placeholder="dia" >
 <table class="table">
     <thead>
       <tr>
@@ -24,8 +26,6 @@
         @foreach ($alumnos as $al)
             <tr>
                 <td hidden><input type="text" value="{{ $al->id }}" class="form-control" name="id[]"  ></td>
-                <td hidden><input type="text" value="{{ $al->id }}" class="form-control" name="id[]"  ></td>
-                <td><input type="text" value="" class="form-control" name="fecha[]"  ></td>
                 <td><input type="text" value="{{ $al->nombre }}" class="form-control" name="nombre[]" ></td>
                 <td><input type="text" value="{{ $al->apellido }}" class="form-control" name="apellido[]"  ></td>
                 <td><input type="text" value="{{ $al->jornada->nombre }}" class="form-control" name="jornada_id[]"  ></td>
