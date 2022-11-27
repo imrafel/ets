@@ -8,10 +8,17 @@
 
     <h3>Mecanica Automotriz</h3>
     
-    <div class="row justify-content-center">
+    <form class="form-inline">
+
+      <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
+  
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+
       
 <form action="{{ url('/asistencia') }}" method="POST" enctype="multipart/form-data" >
     @csrf
+
     <select aria-label="Default select example" name="mes"  >
       <option value="Febrero">Febrero</option>
       <option value="Marzo">Marzo</option>
@@ -47,6 +54,10 @@
                         <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Si" name="asistio[]">
                         <label class="form-check-label" for="inlineCheckbox1">Si</label>
                     </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="No" name="asistio[]">
+                      <label class="form-check-label" for="inlineCheckbox1">No</label>
+                  </div>
                 </td>
             </tr>
         @endforeach

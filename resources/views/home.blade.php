@@ -9,6 +9,7 @@
                 <div class="card-body">
                     <div class="container">
                         <div class="row">
+                            @if (auth()->user()->role  == 'admin' && auth()->user()->role  == 'secre')
                             <div class="col">
                                 <a class="btn btn-success" href="{{ url('/curso')}}" >Cursos</a>
                             </div>
@@ -25,10 +26,11 @@
                                 <a class="btn btn-success" href="{{ url('/asistencia')}}" >Ver Asistencias</a>
                             </div>
                             <div class="col">
-                                <a class="btn btn-success" href="{{ url('/asistencia/create')}}" >Agregar Asistencia</a>
-                            </div>
-                            <div class="col">
                                 <a class="btn btn-success" href="{{ url('/asigna')}}" >Asignar Profesores</a>
+                            </div>
+                            @endif
+                            <div class="col">
+                                <a class="btn btn-success" href="{{ url('/asistencia/create')}}" >Agregar Asistencia</a>
                             </div>
                         </div>
                     </div>

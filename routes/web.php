@@ -27,15 +27,13 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::resource('curso', CursoController::class)->middleware('auth', 'role');
 
+Route::resource('asigna', AsignaController::class)->middleware('auth', 'role');
 
-Route::resource('curso', CursoController::class)->middleware('auth');
+Route::resource('alumno', AlumnoController::class)->middleware('auth', 'role');
 
-Route::resource('asigna', AsignaController::class)->middleware('auth');
-
-Route::resource('alumno', AlumnoController::class)->middleware('auth');
-
-Route::resource('jornada', JornadaController::class)->middleware('auth');
+Route::resource('jornada', JornadaController::class)->middleware('auth', 'role');
 
 Route::resource('asistencia', AsistenciaController::class)->middleware('auth');
 

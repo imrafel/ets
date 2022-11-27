@@ -22,6 +22,7 @@ class AsignaController extends Controller
         $asignaciones = Asigna::all();
 
 
+
         return view('asigna.index', compact('asignaciones'));
     }
 

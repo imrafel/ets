@@ -22,17 +22,46 @@ class AsistenciaController extends Controller
      */
     public function index()
     {
+
         $asistencias = Asistencia::all();
 
+        $fechasClase = [];
+        $alumnosAsistencia = [];
+        $alumnoId = [];
+        $alumno = [];
+
+        $alumnos = Asistencia::all()->groupBy('alumno_id');
+
+        foreach ($alumnos as $key => $al) {
+            array_push($alumnoId, $key);
+        }
+
+        foreach($alumnoId as $key => $al){
+            $alumnoD= DB::table('alumnos')
+                ->where('id', $al)->get();
+            
+            array_push($alumno, $alumnoD);
+        }
+
+
+        $fechas = Asistencia::all('fecha', 'asistio')->groupBy('fecha');
+        // dd($fechas);
+
+        foreach ($fechas as $key => $fecha) {
+            array_push($fechasClase, $key);
+        }
+        
+        foreach($fechasClase as $key => $fecha){
+            $asistencia = DB::table('asistencias')
+                ->where('fecha', $fecha)->get();
+            
+            array_push($alumnosAsistencia, $asistencia);
+            // dd($alumnosAsistencia);
+        }
        
-        return view('asistencias.index', compact('asistencias'));
+        return view('asistencias.ver', compact('alumnosAsistencia', 'fechasClase', 'alumno', 'fechas', 'asistencias'));
     }
 
-    // public function verAsistencias()
-    // {
-    //     $asistencias = Asistencia::all();
-        
-    // }
 
     /**
      * Show the form for creating a new resource.
@@ -41,11 +70,26 @@ class AsistenciaController extends Controller
      */
     public function create()
     {
+
+        $cursosAsignados = [];
+        $jornadasAsignadas = [];
+        
         $userLog = Auth::id();
 
+        
+
         $asignacion = Asigna::where('user_id', '=', $userLog)->get();
+
+        foreach ($asignacion as $key => $as) {
+            array_push($cursosAsignados, $as['jornada_id']);
+            array_push($jornadasAsignadas, $as['curso_id']);
+        }
+
               
         $alumnos = Alumno::where('jornada_id', '=', 1)->get();
+
+        
+
         
         return view('asistencias.create', compact('alumnos', 'asignacion'));
     }
