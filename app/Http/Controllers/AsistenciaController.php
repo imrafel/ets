@@ -74,21 +74,20 @@ class AsistenciaController extends Controller
         $cursosAsignados = [];
         $jornadasAsignadas = [];
         
+
         $userLog = Auth::id();
 
-        
+        $asignacion = DB::table('asignas')
+                ->where('user_id', $userLog)->get();
 
-        $asignacion = Asigna::where('user_id', '=', $userLog)->get();
+        // dd($asignacion[0]->user_id);
+                
+        $alumnos = Alumno::where('curso_id', '=', $asignacion[0]->curso_id)->get();
 
-        foreach ($asignacion as $key => $as) {
-            array_push($cursosAsignados, $as['jornada_id']);
-            array_push($jornadasAsignadas, $as['curso_id']);
-        }
+        // $alumnos = DB::table('alumnos')
+        // ->where('curso_id', $asignacion[0]->curso_id)->get();
 
-              
-        $alumnos = Alumno::where('jornada_id', '=', 1)->get();
-
-        
+        // dd($alumnos);
 
         
         return view('asistencias.create', compact('alumnos', 'asignacion'));

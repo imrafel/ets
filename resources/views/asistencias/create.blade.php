@@ -8,12 +8,12 @@
 
     <h3>Mecanica Automotriz</h3>
     
-    <form class="form-inline">
+    {{-- <form class="form-inline">
 
       <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
   
          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
+    </form> --}}
 
       
 <form action="{{ url('/asistencia') }}" method="POST" enctype="multipart/form-data" >

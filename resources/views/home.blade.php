@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <div class="container">
                         <div class="row">
-                            @if (auth()->user()->role  == 'admin' && auth()->user()->role  == 'secre')
+                            @if (auth()->user()->role  == 'admin' )
                             <div class="col">
                                 <a class="btn btn-success" href="{{ url('/curso')}}" >Cursos</a>
                             </div>
