@@ -16,9 +16,12 @@ class CursoSeeder extends Seeder
     {
         //
 
-        DB::table('cursos')->insert([
-            'nombre' => 'Mecanismos del automovil'
-        ]);
+        DB::table('cursos')->insert(
+            ['nombre' => 'Mecanismos del automovil anio 1']
+        );
+        DB::table('cursos')->insert(
+            ['nombre' => 'Mecanica Automotriz anio 2']
+        );
 
     }
 }

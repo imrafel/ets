@@ -20,6 +20,10 @@ class CreateAsistenciasTable extends Migration
             $table->string('mes')->nullable();
             $table->string('asistio')->nullable();
             $table->timestamps();
+
+            
+            $table->foreign('alumno_id')->references('id')->on('alumnos')->onDelete('cascade'); 
+
         });
     }
 

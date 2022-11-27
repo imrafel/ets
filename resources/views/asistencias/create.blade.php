@@ -5,27 +5,40 @@
 
 <div class="container">
 
+
     <h3>Mecanica Automotriz</h3>
     
     <div class="row justify-content-center">
       
 <form action="{{ url('/asistencia') }}" method="POST" enctype="multipart/form-data" >
     @csrf
-    <input type="text" value="Febrero" name="mes" >
+    <select aria-label="Default select example" name="mes"  >
+      <option value="Febrero">Febrero</option>
+      <option value="Marzo">Marzo</option>
+      <option value="Abril">Abril</option>
+      <option value="Mayo">Mayo</option>
+      <option value="Junio">Junio</option>
+      <option value="Julio">Julio</option>
+      <option value="Agosto">Agosto</option>
+      <option value="Septiembre">Septiembre</option>
+      <option value="Octubre">Octubre</option>
+      <option value="Noviembre">Noviembre</option>
+      <option value="Diciembre">Diciembre</option>
+  </select>
     <input type="text" name="dia" placeholder="dia" >
 <table class="table">
     <thead>
       <tr>
         <th scope="col">nombre</th>
         <th scope="col">apellido</th>
-        <th scope="col" >jornada</th>
-        <th scope="col" >Fecha: 25 </th>
+        <th scope="col">jornada</th>
+        <th scope="col">Asistio</th>
       </tr>
     </thead>
     <tbody>
         @foreach ($alumnos as $al)
             <tr>
-                <td hidden><input type="text" value="{{ $al->id }}" class="form-control" name="id[]"  ></td>
+                <td hidden><input type="text" value="{{ $al->id}}" class="form-control" name="id[]"  ></td>
                 <td><input type="text" value="{{ $al->nombre }}" class="form-control" name="nombre[]" ></td>
                 <td><input type="text" value="{{ $al->apellido }}" class="form-control" name="apellido[]"  ></td>
                 <td><input type="text" value="{{ $al->jornada->nombre }}" class="form-control" name="jornada_id[]"  ></td>
@@ -43,7 +56,7 @@
   </table>
   <button type="submit" class="btn btn-success" value="Enviar">Subir Asistencias</button>
 </form>
-    </div>
+    </div> 
     
 </div>
 

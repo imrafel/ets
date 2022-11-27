@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\AsignaController;
 use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\JornadaController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,19 +19,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('home');
+// });
+
 Route::get('/', function () {
-    return view('home');
+    return view('auth.login');
 });
 
 
-Route::resource('curso', CursoController::class);
 
-Route::resource('alumno', AlumnoController::class);
+Route::resource('curso', CursoController::class)->middleware('auth');
 
-Route::resource('jornada', JornadaController::class);
+Route::resource('asigna', AsignaController::class)->middleware('auth');
 
-Route::resource('asistencia', AsistenciaController::class);
+Route::resource('alumno', AlumnoController::class)->middleware('auth');
 
-Auth::routes();
+Route::resource('jornada', JornadaController::class)->middleware('auth');
+
+Route::resource('asistencia', AsistenciaController::class)->middleware('auth');
+
+Auth::routes(['register' => false, 'reset' => false]);
+
+Route::resource('user', UserController::class)->middleware('auth', 'role');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
