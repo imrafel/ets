@@ -8,7 +8,7 @@ use App\Models\Asistencia;
 use App\Models\Alumno;
 use App\Models\Curso;
 use App\Models\Jornada;
- 
+
 use Illuminate\Http\Request;
 
 class AsistenciaController extends Controller
@@ -20,11 +20,33 @@ class AsistenciaController extends Controller
      */
     public function index()
     {
-        
+
         $asistencias = Asistencia::all();
 
-       
-        return view('asistencias.index', compact('asistencias'));
+        $productos = array(
+
+            'Rafael Carranza' => array(
+                '12' => "Si",
+                '22' => "No",
+                '23' => "Si",
+                '24' => "PE"
+            ),
+            'Jose Manuel' => array(
+                '12' => "Si",
+                '33' => "No",
+                '63' => "Si",
+                '55' => "PE"
+            ),
+            'Ruben Rivera' => array(
+                '44' => "Si",
+                '55' => "No",
+                '66' => "Si",
+                '22' => "PE"
+            ),
+        );
+
+
+        return view('asistencias.index', compact('asistencias', 'productos'));
     }
 
     /**
@@ -38,7 +60,7 @@ class AsistenciaController extends Controller
 
         $alumnos = Alumno::where('curso_id', '1')->get();
 
-        
+
 
         return view('asistencias.create', compact('alumnos'));
     }
@@ -52,13 +74,13 @@ class AsistenciaController extends Controller
     public function store(Request $request)
     {
         //
-        
+
         $datosAsistencia = request()->except('_token', 'nombre', 'apellido', 'jornada_id');
 
         $ids = $datosAsistencia['id'];
         $asistio = $datosAsistencia['asistio'];
         $fecha = $datosAsistencia['dia'];
-        $mes = $datosAsistencia['mes']; 
+        $mes = $datosAsistencia['mes'];
 
         $datos = array_combine($ids, $asistio);
 
@@ -75,15 +97,18 @@ class AsistenciaController extends Controller
         // }
 
 
-            foreach ($datos as $key => $dato) {
-                $data = array(
-                'alumno_id' => $key, 
+
+
+
+        foreach ($datos as $key => $dato) {
+            $data = array(
+                'alumno_id' => $key,
                 'fecha' => $fecha,
                 'mes' => $mes,
                 'asistio' => $dato,
-                );
-            Asistencia::insert($data);    
-            }
+            );
+            Asistencia::insert($data);
+        }
 
         // var_dump($datos);
         return redirect('/asistencia');
