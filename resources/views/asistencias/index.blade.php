@@ -4,15 +4,13 @@
 
 <div class="container">
 
-
-        <table class="table">
+    <a href="">{{ $asis }}</a>
+        {{-- <table class="table">
             <tr>
                 <th></th>
                 <th colspan="4" style="text-align: center">Febrero</th>
                 <th colspan="4" style="text-align: center">Marzo</th>
                 <th colspan="4" style="text-align: center">Abril</th>
-                <th colspan="4" style="text-align: center">Mayo</th>
-                <th colspan="4" style="text-align: center">Junio</th>
             </tr>
             <tr>
             @foreach ($productos as $producto => $detalles)
@@ -31,10 +29,10 @@
                 @endforeach
             </tr>
             @endforeach
-        </table>
-
-    {{-- <h3 class="mb-4">Asistencia de Mecanica Automotriz - Matutina</h3> --}}
-    {{-- <div class="row justify-content-center">
+        </table> --}}
+{{-- 
+    <h3 class="mb-4">Asistencia de Mecanica Automotriz - Matutina</h3> 
+<div class="row justify-content-center"> 
 
         <table class="table">
             <thead>
@@ -48,7 +46,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($asistencias as $as)
+                @foreach ($asis as $key => $as )
                 <tr>
                     <td>{{ $as->id }}</td>
                     <td>{{ $as->alumno->nombre}}</td>
@@ -60,7 +58,7 @@
                 @endforeach
             </tbody>
         </table>
-    </div> --}}
+    </div>  --}}
     {{-- <table>
         <tr>
             <th></th>

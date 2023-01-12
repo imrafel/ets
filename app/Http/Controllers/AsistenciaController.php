@@ -21,7 +21,36 @@ class AsistenciaController extends Controller
     public function index()
     {
 
-        $asistencias = Asistencia::all();
+
+        $asistencias = Asistencia::all()->groupBy('alumno_id');
+
+        $ids = [];
+        $fechas = [];
+        $meses = [];
+        $asis = [];
+
+        
+
+
+
+        // foreach ($asistencias as $key => $value) {
+        //     $uniqId = array_unique($ids);
+        //     array_push($ids, $value->alumno_id);
+        //     array_push($fechas, $value->fecha);
+        //     array_push($meses, $value->mes);
+        //     array_push($asis, $value->asistio);
+ 
+        //     foreach ($ids as $key => $dato) {                
+        //         $dato = array(
+        //             $fechas[$key] => $asis[$key],
+        //         );
+        //     }
+        //     // array_push($alumnos, $dato);
+        // }
+
+        // dd($uniqId);
+
+
 
         $productos = array(
 
@@ -46,7 +75,7 @@ class AsistenciaController extends Controller
         );
 
 
-        return view('asistencias.index', compact('asistencias', 'productos'));
+        return view('asistencias.index', compact('asis', 'productos'));
     }
 
     /**
