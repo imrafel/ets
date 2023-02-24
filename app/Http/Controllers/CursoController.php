@@ -41,8 +41,6 @@ class CursoController extends Controller
         //
         $datosCurso = request()->except('_token');
 
-        //inserta los datos recibidos y redirecciona al Userhome
-
         Curso::insert($datosCurso);
         return redirect('/curso');
     }

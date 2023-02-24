@@ -45,35 +45,16 @@ class UserController extends Controller
             'name'=>'required|string|max:100',
             'email'=>'required|string|max:100',
             'password'=>'required|string|max:100',
-            'verPassword'=>'required|string|max:100',
         ];
-
-        // mensaje en caso de error en el formulario
 
         $mensaje=[
             'required'=>'El :attribute es requerido',
         ];
-
-        // compara las dos comntrase;as, en caso de error redirige con mensaje
-
-        if($request['password'] !== $request['verPassword'] ){
-            return redirect('/user/create')->with('mensaje', 'No coinciden las contrase;as');    
-        }
-
-        // encripta la contrase;a con el Hash
-        
         $request['password'] = Hash::make($request['password']);
-
-        // valida todos los datos para enviarlos
 
         $this->validate($request,$campos, $mensaje);    
 
-        // toma los datos exceptuando el tocken de seguridad y la clave repetida
-
-        $datosUser = request()->except('_token', 'verPassword');
-
-        //inserta los datos recibidos y redirecciona al Userhome
-
+        $datosUser = request()->except('_token');
         User::insert($datosUser);
         return redirect('/user')->with('mensaje', 'User Creado');
 

@@ -24,11 +24,6 @@
     <input type="password" class="form-control" name="password"  id="password" placeholder="Password"
         value="{{ isset($user->password)?$user->password:"" }}">
 </div>
-<div class="col-6">
-    <label for="verPassword" class="form-label">Verificar Password</label>
-    <input type="password" class="form-control" name="verPassword"  id="verPassword" placeholder="Verificar Password"
-        value="{{ isset($user->password)?$user->password:"" }}">
-</div>
 <div class="col-6" > 
     <label for="role" class="form-label">Rol de Usuario</label>
     <select class="form-select" name="role">

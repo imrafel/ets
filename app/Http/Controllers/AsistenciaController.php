@@ -25,41 +25,9 @@ class AsistenciaController extends Controller
 
         $asistencias = Asistencia::all();
 
-        $fechasClase = [];
-        $alumnosAsistencia = [];
-        $alumnoId = [];
-        $alumno = [];
+       
 
-        $alumnos = Asistencia::all()->groupBy('alumno_id');
-
-        foreach ($alumnos as $key => $al) {
-            array_push($alumnoId, $key);
-        }
-
-        foreach ($alumnoId as $key => $al) {
-            $alumnoD = DB::table('alumnos')
-                ->where('id', $al)->get();
-
-            array_push($alumno, $alumnoD);
-        }
-
-
-        $fechas = Asistencia::all('fecha', 'asistio')->groupBy('fecha');
-        // dd($fechas);
-
-        foreach ($fechas as $key => $fecha) {
-            array_push($fechasClase, $key);
-        }
-
-        foreach ($fechasClase as $key => $fecha) {
-            $asistencia = DB::table('asistencias')
-                ->where('fecha', $fecha)->get();
-
-            array_push($alumnosAsistencia, $asistencia);
-            // dd($alumnosAsistencia);
-        }
-
-        return view('asistencias.ver', compact('alumnosAsistencia', 'fechasClase', 'alumno', 'fechas', 'asistencias'));
+        return view('asistencias.ver', compact('asistencias'));
     }
 
 
@@ -73,8 +41,6 @@ class AsistenciaController extends Controller
 
         $cursosAsignados = [];
         $jornadasAsignadas = [];
-
-
         $userLog = Auth::id();
 
         if ($userLog == 1) {
@@ -83,18 +49,9 @@ class AsistenciaController extends Controller
         } else {
             $asignacion = DB::table('asignas')
                 ->where('user_id', $userLog)->get();
-
-            // dd($asignacion[0]->user_id);
-
             $alumnos = Alumno::where('curso_id', '=', $asignacion[0]->curso_id)->get();
         }
-
-        // $alumnos = DB::table('alumnos')
-        // ->where('curso_id', $asignacion[0]->curso_id)->get();
-
-        // dd($alumnos);
-
-
+        
         return view('asistencias.create', compact('alumnos', 'asignacion'));
     }
 

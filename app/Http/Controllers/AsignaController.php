@@ -18,10 +18,7 @@ class AsignaController extends Controller
     public function index()
     {
         //
-        
         $asignaciones = Asigna::all();
-
-
 
         return view('asigna.index', compact('asignaciones'));
     }
@@ -52,7 +49,6 @@ class AsignaController extends Controller
         //
         
         $datosAsignar= request()->except('_token');
-
         Asigna::insert($datosAsignar);
 
         return redirect('/asigna');

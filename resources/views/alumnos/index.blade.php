@@ -21,8 +21,7 @@
                 <th>Apellidos</th>
                 <th>Nombres</th>
                 <th>Email</th>
-                <th>Mensualidad</th>
-                <th>Inscrito por:</th>
+                <th>Telefono</th>
                 <th>Opciones</th>
             </tr>
             </thead>
@@ -45,8 +44,6 @@
                     <td>{{ $al->nombre }}</td>
                     <td>{{ $al->email }}</td>
                     <td>{{ $al->movil }}</td>
-                    <td>Q {{ $al->mensualidad }}.00</td>
-                    <td>{{ $al->razonamiento }}</td>
                     <td>
                         <form action="{{ url('/alumno/'. $al->id) }}" method="POST">
                             @csrf
@@ -55,7 +52,7 @@
                                 class="btn btn-danger" 
                                 onclick="return confirm('Seguro quieres eliminar?')" />
                                 <a class="btn btn-warning" href="{{ url('/alumno/' . $al->id . '/edit') }}">Editar</a>
-                                <a class="btn btn-primary" href="{{ url('/alumno/' . $al->id) }}">Ver Detalle</a>
+                                <a class="btn btn-primary" href="{{ url('/alumno/' . $al->id) }}">Detalle</a>
                         </form>
                     </td>
                 </tr>

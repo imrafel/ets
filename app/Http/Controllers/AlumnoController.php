@@ -20,7 +20,6 @@ class AlumnoController extends Controller
         //
         $alumnos = Alumno::all();
         $jornadaEstudio = 1;
-        // $alumnos = Alumno::where('jornada_id','like',$jornadaEstudio)->paginate(5);
         return view('alumnos.index', compact('alumnos'));
     }
 
