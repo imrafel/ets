@@ -10,7 +10,7 @@ use App\Models\Alumno;
 use App\Models\Curso;
 use App\Models\Jornada;
 use App\Models\Asigna;
- 
+
 use Illuminate\Http\Request;
 
 class AsistenciaController extends Controller
@@ -36,10 +36,10 @@ class AsistenciaController extends Controller
             array_push($alumnoId, $key);
         }
 
-        foreach($alumnoId as $key => $al){
-            $alumnoD= DB::table('alumnos')
+        foreach ($alumnoId as $key => $al) {
+            $alumnoD = DB::table('alumnos')
                 ->where('id', $al)->get();
-            
+
             array_push($alumno, $alumnoD);
         }
 
@@ -50,15 +50,15 @@ class AsistenciaController extends Controller
         foreach ($fechas as $key => $fecha) {
             array_push($fechasClase, $key);
         }
-        
-        foreach($fechasClase as $key => $fecha){
+
+        foreach ($fechasClase as $key => $fecha) {
             $asistencia = DB::table('asistencias')
                 ->where('fecha', $fecha)->get();
-            
+
             array_push($alumnosAsistencia, $asistencia);
             // dd($alumnosAsistencia);
         }
-       
+
         return view('asistencias.ver', compact('alumnosAsistencia', 'fechasClase', 'alumno', 'fechas', 'asistencias'));
     }
 
@@ -73,23 +73,28 @@ class AsistenciaController extends Controller
 
         $cursosAsignados = [];
         $jornadasAsignadas = [];
-        
+
 
         $userLog = Auth::id();
 
-        $asignacion = DB::table('asignas')
+        if ($userLog == 1) {
+            $alumnos = Alumno::all();
+            $asignacion = [];
+        } else {
+            $asignacion = DB::table('asignas')
                 ->where('user_id', $userLog)->get();
 
-        // dd($asignacion[0]->user_id);
-                
-        $alumnos = Alumno::where('curso_id', '=', $asignacion[0]->curso_id)->get();
+            // dd($asignacion[0]->user_id);
+
+            $alumnos = Alumno::where('curso_id', '=', $asignacion[0]->curso_id)->get();
+        }
 
         // $alumnos = DB::table('alumnos')
         // ->where('curso_id', $asignacion[0]->curso_id)->get();
 
         // dd($alumnos);
 
-        
+
         return view('asistencias.create', compact('alumnos', 'asignacion'));
     }
 
@@ -102,28 +107,27 @@ class AsistenciaController extends Controller
     public function store(Request $request)
     {
         //
-        
+
         $datosAsistencia = request()->except('_token', 'nombre', 'apellido', 'jornada_id');
 
         $ids = $datosAsistencia['id'];
         $asistio = $datosAsistencia['asistio'];
         $fecha = $datosAsistencia['dia'];
-        $mes = $datosAsistencia['mes']; 
+        $mes = $datosAsistencia['mes'];
 
         $datos = array_combine($ids, $asistio);
-    
-        foreach($datos as $key=>$dato) {
+
+        foreach ($datos as $key => $dato) {
             $data = array(
-                'alumno_id' => $key, 
+                'alumno_id' => $key,
                 'fecha' => $fecha,
                 'mes' => $mes,
                 'asistio' => $dato,
-                );
-            Asistencia::insert($data); 
+            );
+            Asistencia::insert($data);
         }
-  
-        return redirect('/asistencia');
 
+        return redirect('/asistencia');
     }
 
     /**

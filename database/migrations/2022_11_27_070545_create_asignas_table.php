@@ -22,7 +22,7 @@ class CreateAsignasTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
-            $table->foreign('jornada_id')->references('id')->on('jornada')->onDelete('cascade');
+            $table->foreign('jornada_id')->references('id')->on('jornadas')->onDelete('cascade');
         });
     }
 
