@@ -22,15 +22,19 @@ class AsistenciaController extends Controller
      */
     public function index()
     {
-
         $asistencias = Asistencia::all();
 
-       
-
-        return view('asistencias.ver', compact('asistencias'));
+        return view('asistencias.index', compact('asistencias'));
     }
 
+    public function curso(){
 
+        $userLog = Auth::id();
+
+        $cursos = Asigna::where('user_id', '=', $userLog)->get();
+        
+        return view('asistencias.curso', compact('cursos'));
+    }
     /**
      * Show the form for creating a new resource.
      *

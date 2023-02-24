@@ -27,6 +27,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/asistencia/curso', [App\Http\Controllers\AsistenciaController::class, 'curso'])->name('asistencias.curso');
+
+
 Route::resource('curso', CursoController::class)->middleware('auth', 'role');
 
 Route::resource('asigna', AsignaController::class)->middleware('auth', 'role');

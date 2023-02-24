@@ -1,17 +1,20 @@
-
 @extends('layouts.app')
 
 @section('content')
 
 <div class="container">
-    <h3 class="mb-4" >Escoje un curso</h3>
-    <div class="row justify-content-center">
-
-        @foreach ($alumnos as $as)
-            <a class="btn btn-success" ></a>
-        @endforeach
-        
+    <div class="row">
+        @foreach ($cursos as $curso)
+        <form action="{{ url('/asistencia/create') }}" method="POST">
+            @csrf
+            {{ method_field('GET') }}
+            <div class="col">
+                <button type="submit" class="btn btn-success">{{ $curso->curso->nombre }} {{ $curso->jornada->id }}</button>
+            </div>
+            @endforeach
+        </form>
     </div>
 </div>
 
-  @endsection
+
+@endsection

@@ -6,14 +6,7 @@
 <div class="container">
 
 
-    <h3>Mecanica Automotriz</h3>
-    
-    {{-- <form class="form-inline">
-
-      <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
-  
-         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form> --}}
+  <h3>Mecanica Automotriz</h3>
 
       
 <form action="{{ url('/asistencia') }}" method="POST" enctype="multipart/form-data" >
@@ -38,6 +31,7 @@
       <tr>
         <th scope="col">nombre</th>
         <th scope="col">apellido</th>
+        <th scope="col">Curso</th>
         <th scope="col">jornada</th>
         <th scope="col">Asistio</th>
       </tr>
@@ -48,6 +42,7 @@
                 <td hidden><input type="text" value="{{ $al->id}}" class="form-control" name="id[]"  ></td>
                 <td><input type="text" value="{{ $al->nombre }}" class="form-control" name="nombre[]" ></td>
                 <td><input type="text" value="{{ $al->apellido }}" class="form-control" name="apellido[]"  ></td>
+                <td><input type="text" value="{{ $al->curso->nombre }}" class="form-control" name="apellido[]"  ></td>
                 <td><input type="text" value="{{ $al->jornada->nombre }}" class="form-control" name="jornada_id[]"  ></td>
                 <td>
                     <div class="form-check form-check-inline">
