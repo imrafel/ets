@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Jornada;
 use Illuminate\Http\Request;
+use Illuminate\Support\Js;
 
 class JornadaController extends Controller
 {
@@ -27,6 +28,8 @@ class JornadaController extends Controller
     public function create()
     {
         //
+
+        return view('jornadas.create');
     }
 
     /**
@@ -38,6 +41,10 @@ class JornadaController extends Controller
     public function store(Request $request)
     {
         //
+        $jornada= request()->except('_token');
+
+        Jornada::insert($jornada);
+        return redirect('/jornada');
     }
 
     /**
@@ -80,8 +87,10 @@ class JornadaController extends Controller
      * @param  \App\Models\Jornada  $jornada
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Jornada $jornada)
+    public function destroy($id)
     {
         //
+        Jornada::destroy($id);
+        return redirect('/jornada');
     }
 }
